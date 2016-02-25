@@ -6,6 +6,10 @@
 
 This is a [JHipster](http://jhipster.github.io/) module, that is meant to be used in a JHipster application.
 
+I wrote a yeoman module on top of this jhipster project to create some customizable UI and REST API based on templates. My module creates commonly used standard UI components such as accordion, panel grids, matrix, add buttons, list group - to name a few.  It also creates REST API, APIs for navigations to parent screen, Service methods in Angular Factories and a new customised UI screen. Since it uses template based approach, more and more components and complex REST API can be added as we go. 
+
+The creator needs to specify the settings in a JSON file about which components needs to be used and how the data should be accessed by that components. e.g. specify that i want to use an Accordion and the data should come from Study entity.   or specify that i want to create a new REST API that will get all the Plates in a given study.
+
 # Prerequisites
 
 As this is a [JHipster](http://jhipster.github.io/) module, we expect you have JHipster and its related tools already installed:
