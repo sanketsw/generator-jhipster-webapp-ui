@@ -1,0 +1,31 @@
+<<%= current.headerClass %>><%= current.panelHeader %></<%= current.headerClass %>>
+<div ng-controller="<%= current.entityController %>">
+	<div class="table-responsive">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th ng-repeat="n in [].constructor(<%= current.columns %> + 1) track by $index">{{$index}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr	ng-repeat="(row, y) in getNumber(<%= current.array %>.length, <%= current.columns %>) track by $index">
+					<td>{{row+1}}</td>
+					<td class="text-primary" ng-class="appliedClass(!<%= current.counter %>.<%= current.property %>)"
+						ng-repeat="(col, <%= current.counter %>) in <%= current.array %> track by $index"
+						ng-if="col >= (row)*<%= current.columns %> && col < (row+1)*<%= current.columns %>"
+						ng-click="" ui-sref="<%= current.entityNameLowerCase %>.edit({id:<%= current.counter %>.id})">
+							<span ng-show="<%= current.counter %>.<%= current.property %>"> X </span> 
+							<span ng-show="!<%= current.counter %>.<%= current.property %>"> - </span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<button type="button" ui-sref="<%= current.entityNameLowerCase %>.new" class="btn btn-default <%= current.operationAdd %>">
+	<span class="glyphicon glyphicon-plus"></span> <span
+		class="text-primary"> Add </span>
+</button>
+
+
+			

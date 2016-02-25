@@ -1,0 +1,1 @@
+controller('PlateController', function ($scope, $state, Plate, 

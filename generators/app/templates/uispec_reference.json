@@ -1,0 +1,161 @@
+PanelGrid
+
+{
+  "uicomponent" : "Panelgrid",
+  "panelwidth" : "col-sm-3",
+  "panelBackgroundClass" : "bg-primary",
+  "textColorClass" : "",
+  "style" : "",
+  "wrappingClass" : "",
+  "panelHeader": "Seats layout",
+  "headerClass" : "h6",
+  "entityController" : "SeatController",
+  "entityEnumeration" : "ng-repeat='t in h.seats'", 
+  "entityName" : "Seat",
+  "entityNameLowerCase" : "seat",
+  "heading" : "{{t.status}}",
+  "subheading" : "",
+  "counter" : "t",
+  "operationAdd" : "show",
+  "methods" : [
+    {
+      "methodType" : "NavigationToPreviousAPI"
+    }
+  ]
+}
+
+Listgroup
+
+{
+  "uicomponent" : "Listgroup",
+  "wrappingClass" : "",
+  "panelHeader": "Presenters",
+  "headerClass" : "h4",
+  "entityController" : "PresenterController",
+  "entityEnumeration" : "ng-repeat='p in s.presenters'", 
+  "entityName" : "Presenter",
+  "entityNameLowerCase" : "presenter",
+  "heading" : "{{p.name}}",
+  "subheading" : " - {{p.designation}} ",
+  "counter" : "p",          
+  "operationAdd" : "show",
+  "methods" : [
+    {
+      "methodType" : "NavigationToPreviousAPI"
+    }
+  ]
+}
+
+
+Textlist
+{
+  "uicomponent" : "Textlist",
+  "wrappingClass" : "",
+  "panelHeader": "Comments",
+  "headerClass" : "h4",
+  "entityController" : "MessageController",
+  "entityEnumeration" : "ng-repeat='p in s.messages'", 
+  "entityName" : "Message",
+  "entityNameLowerCase" : "message",
+  "heading" : "{{p.messageString}}",
+  "subheading" : " on {{p.timestamp | date:'medium'}} ",
+  "counter" : "p",
+  "operationAdd" : "show",
+  "methods" : [
+    {
+      "methodType" : "NavigationToPreviousAPI"
+    }
+  ]
+}
+
+Accordion
+
+{
+  "uicomponent" : "Accordion",
+  "wrappingClass" : "col-sm-12",
+  "panelHeader": "Conference Sessions Details",
+  "headerClass" : "h2",
+  "entityController" : "SessionController",
+  "entityEnumeration" : "ng-repeat='s in sessions' ng-init='s.presenters=getPresenters(s.id); s.schedules=getSchedules(s.id); s.messages=getMessages(s.id)'", 
+  "entityName" : "Session",
+  "entityNameLowerCase" : "session",
+  "heading" : "{{s.name}}",
+  "counter" : "s",
+  "properties" : [
+    {
+        "propertyId": 1,
+        "name": "description"
+    },
+    {
+        "propertyId": 2,
+        "name": "url"
+    },
+    "operationAdd" : "show",
+	"methods" : [
+		{
+	 		"methodType" : "NavigationToPreviousAPI"
+		}
+	]
+  ]
+}
+
+Matrix
+
+{
+  "uicomponent" : "Matrix",
+  "wrappingClass" : "",
+  "panelHeader": "Seat Layout",
+  "headerClass" : "h6",
+  "columns" : "3",
+  "array" : "h.seats",
+  "counter" : "t",
+  "trueValue" : "X",
+  "trueCellColorClass" : "bg-success",
+  "falseValue" : "-",
+  "falseCellColorClass" : "bg-danger", 
+  "entityController" : "SeatController",                  
+  "entityName" : "Seat",
+  "entityNameLowerCase" : "seat",
+  "operationAdd" : "show",
+  "methods" : [
+    {
+      "methodType" : "MatrixComponentAPI"
+    },
+    {
+      "methodType" : "NavigationToPreviousAPI"
+    }
+  ]
+}
+
+REST API 
+For many to many and one to many relations
+{
+
+  "methodType" : "RESTAPI",
+  "restapiName" : "session.schedules",
+  "factory" : "SessionSchedules",
+  "targetEntity" : "Schedule",
+  "targetJPAMethod" : "findBySession_id",
+  "targetEntityEnumeration" : "schedules",
+  "enumerationMethodName" : "getSchedules"
+}
+For many to one or one to one relations (Check the targetJPAMethod)
+{
+
+  "methodType" : "RESTAPI",
+  "restapiName" : "schedule.halls",
+  "factory" : "ScheduleHalls",
+  "targetEntity" : "Hall",
+  "targetJPAMethod" : "findBySchedule_id",
+  "targetEntityEnumeration" : "halls",
+  "enumerationMethodName" : "getHalls"
+}
+
+
+Page headers (Common attributes)
+  "applicationName" : "Asia Pacific Summit",
+  "tagline" : "New way to make business",
+  "logo" : "glyphicon glyphicon-baby-formula",
+  "embeddedComponents": [
+   	// embed above components here
+  ]

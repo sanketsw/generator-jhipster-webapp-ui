@@ -1,0 +1,178 @@
+{
+  "applicationName" : "Asia Pacific Summit",
+  "tagline" : "New way to make business",
+  "logo" : "glyphicon glyphicon-baby-formula",
+  "embeddedComponents": [
+    {
+      "uicomponent" : "Accordion",
+      "wrappingClass" : "col-sm-12",
+      "panelHeader": "Conference Sessions Details",
+      "headerClass" : "h2",
+      "entityController" : "SessionController",
+      "entityEnumeration" : "ng-repeat='s in sessions' ng-init='s.presenters=getPresenters(s.id); s.schedules=getSchedules(s.id); s.messages=getMessages(s.id)'", 
+      "entityName" : "Session",
+      "entityNameLowerCase" : "session",
+      "heading" : "{{s.name}}",
+      "counter" : "s",
+      "properties" : [
+        {
+            "propertyId": 1,
+            "name": "description"
+        },
+        {
+            "propertyId": 2,
+            "name": "url"
+        }
+      ],
+      "methods" : [
+        {
+
+          "methodType" : "RESTAPI",
+          "restapiName" : "session.presneters",
+          "factory" : "SessionPresenters",
+          "targetEntity" : "Presenter",
+          "targetJPAMethod" : "findBySessions_id",
+          "targetEntityEnumeration" : "presenters",
+          "enumerationMethodName" : "getPresenters"
+        },
+        {
+
+          "methodType" : "RESTAPI",
+          "restapiName" : "session.schedules",
+          "factory" : "SessionSchedules",
+          "targetEntity" : "Schedule",
+          "targetJPAMethod" : "findBySession_id",
+          "targetEntityEnumeration" : "schedules",
+          "enumerationMethodName" : "getSchedules"
+        },
+        {
+
+          "methodType" : "RESTAPI",
+          "restapiName" : "session.messages",
+          "factory" : "SessionMessages",
+          "targetEntity" : "Message",
+          "targetJPAMethod" : "findBySession_id",
+          "targetEntityEnumeration" : "messages",
+          "enumerationMethodName" : "getMessages"
+        }
+      ],
+      "embeddedComponents" : [
+        {
+          "uicomponent" : "Accordion",
+          "wrappingClass" : "",
+          "panelHeader": "Schedule",
+          "headerClass" : "h4",
+          "entityController" : "ScheduleController",
+          "entityEnumeration" : "ng-repeat='p in s.schedules' ng-init='p.halls=getHalls(p.id)'", 
+          "entityName" : "Schedule",
+          "entityNameLowerCase" : "schedule",
+          "heading" : "Day {{p.day}} - {{p.time}}",
+          "counter" : "p",
+          "methods" : [
+            {
+
+              "methodType" : "RESTAPI",
+              "restapiName" : "schedule.halls",
+              "factory" : "ScheduleHalls",
+              "targetEntity" : "Hall",
+              "targetJPAMethod" : "findBySchedule_id",
+              "targetEntityEnumeration" : "halls",
+              "enumerationMethodName" : "getHalls"
+            }
+          ],
+          "embeddedComponents" : [
+            {
+              "uicomponent" : "Textlist",
+              "wrappingClass" : "",
+              "panelHeader": "",
+              "headerClass" : "h5",
+              "entityController" : "HallController",
+              "entityEnumeration" : "ng-repeat='h in p.halls' ng-init='h.seats=getSeats(h.id)'", 
+              "entityName" : "Hall",
+              "entityNameLowerCase" : "hall",
+              "heading" : "Room {{h.room}}",
+              "subheading" : "",
+              "counter" : "h",
+              "operationAdd" : "hide",
+              "methods" : [
+                {
+                  "methodType" : "RESTAPI",
+                  "restapiName" : "hall.seats",
+                  "factory" : "HallSeats",
+                  "targetEntity" : "Seat",
+                  "targetJPAMethod" : "findByHall_id",
+                  "targetEntityEnumeration" : "seats",
+                  "enumerationMethodName" : "getSeats"
+                }
+              ],
+              "embeddedComponents" : [
+                {
+                  "uicomponent" : "Matrix",
+                  "wrappingClass" : "",
+                  "panelHeader": "Seat Layout",
+                  "headerClass" : "h6",
+                  "columns" : "3",
+                  "array" : "h.seats",
+                  "counter" : "t",
+                  "trueValue" : "X",
+                  "trueCellColorClass" : "bg-success",
+                  "falseValue" : "-",
+                  "falseCellColorClass" : "bg-danger", 
+                  "entityController" : "SeatController",                  
+                  "entityName" : "Seat",
+                  "entityNameLowerCase" : "seat",
+                  "methods" : [
+                    {
+                      "methodType" : "MatrixComponentAPI"
+                    },
+                    {
+                      "methodType" : "NavigationToPreviousAPI"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "uicomponent" : "Listgroup",
+          "wrappingClass" : "",
+          "panelHeader": "Presenters",
+          "headerClass" : "h4",
+          "entityController" : "PresenterController",
+          "entityEnumeration" : "ng-repeat='p in s.presenters'", 
+          "entityName" : "Presenter",
+          "entityNameLowerCase" : "presenter",
+          "heading" : "{{p.name}}",
+          "subheading" : " - {{p.designation}} ",
+          "counter" : "p",          
+          "operationAdd" : "show",
+          "methods" : [
+            {
+              "methodType" : "NavigationToPreviousAPI"
+            }
+          ]
+        },
+        {
+          "uicomponent" : "Textlist",
+          "wrappingClass" : "",
+          "panelHeader": "Comments",
+          "headerClass" : "h4",
+          "entityController" : "MessageController",
+          "entityEnumeration" : "ng-repeat='p in s.messages'", 
+          "entityName" : "Message",
+          "entityNameLowerCase" : "message",
+          "heading" : "{{p.messageString}}",
+          "subheading" : " on {{p.timestamp | date:'medium'}} ",
+          "counter" : "p",
+          "operationAdd" : "show",
+          "methods" : [
+            {
+              "methodType" : "NavigationToPreviousAPI"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

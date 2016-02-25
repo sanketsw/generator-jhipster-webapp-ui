@@ -1,0 +1,102 @@
+{
+  "methodGroups": [
+    {
+      "type" : "RESTAPI",
+      "operations" : [
+        {
+          "targetFilename" : "src/main/webapp/scripts/app/entities/<current.entityNameLowerCase>/<current.entityNameLowerCase>.controller.js",
+          "match" : "methods/controller_match2.js",
+          "target" : "methods/controller_insert2.js",
+          "action" : "prepend"
+        },
+        {
+          "targetFilename" : "src/main/webapp/scripts/app/entities/<current.entityNameLowerCase>/<current.entityNameLowerCase>.controller.js",
+          "match" : "methods/controller_match.js",
+          "target" : "methods/controller_insert.js",
+          "action" : "append"
+        },
+        {
+          "targetFilename" : "src/main/webapp/scripts/components/entities/<current.entityNameLowerCase>/<current.entityNameLowerCase>.service.js",
+          "match" : "methods/service_match.js",
+          "target" : "methods/service_insert.js",
+          "action" : "append"
+        },
+        {
+          "targetFilename" : "src/main/webapp/scripts/components/entities/<current.entityNameLowerCase>/<current.entityNameLowerCase>.service.js",
+          "match" : "methods/service_match2.js",
+          "target" : "methods/service_insert2.js",
+          "action" : "append"
+        },
+        {
+          "targetFilename" : "src/main/webapp/scripts/components/entities/<current.entityNameLowerCase>/<current.entityNameLowerCase>.service.js",
+          "match" : "methods/service_match3.js",
+          "target" : "methods/service_insert3.js",
+          "action" : "append"
+        },
+        {
+          "targetFilename" : "src/main/java/com/ibm/webapp/web/rest/<current.entityName>Resource.java",
+          "match" : "methods/Resource_match1.java",
+          "target" : "methods/Resource_insert1.java",
+          "action" : "prepend"
+        },
+        {
+          "targetFilename" : "src/main/java/com/ibm/webapp/web/rest/<current.entityName>Resource.java",
+          "match" : "methods/Resource_match2.java",
+          "target" : "methods/Resource_insert2.java",
+          "action" : "prepend"
+        },
+        {
+          "targetFilename" : "src/main/java/com/ibm/webapp/web/rest/<current.entityName>Resource.java",
+          "regEx" : "}\\s*$",
+          "append" : "}",
+          "target" : "methods/Resource_insert3.java",
+          "action" : "replaceByRegEx"
+        },
+        {
+          "targetFilename" : "src/main/java/com/ibm/webapp/repository/<method.targetEntity>Repository.java",
+          "regEx" : "}\\s*$",
+          "append" : "}",
+          "target" : "methods/Repository_insert.java",
+          "action" : "replaceByRegEx"
+        }
+      ]
+    },
+    {
+      "type" : "MatrixComponentAPI",
+      "operations" : [
+        {
+          "targetFilename" : "src/main/webapp/scripts/app/screens/customView/customView.controller.js",
+          "match" : "methods/customView.controller_match.js",
+          "target" : "methods/customView.controller_insert.js",
+          "action" : "prepend"
+        }
+      ]
+    },
+    {
+      "type" : "NavigationToPreviousAPI",
+      "operations" : [
+        {
+          "targetFilename" : "src/main/webapp/scripts/app/entities/<current.entityNameLowerCase>/<current.entityNameLowerCase>.js",
+          "match" : "methods/entity_match.js",
+          "target" : "methods/entity_insert.js",
+          "action" : "append",
+          "replace" : "all"
+        },
+        {
+          "targetFilename" : "src/main/webapp/scripts/app/entities/<current.entityNameLowerCase>/<current.entityNameLowerCase>.js",
+          "match" : "methods/entity_match2.js",
+          "target" : "methods/entity_insert2.js",
+          "action" : "append",
+          "replace" : "all"
+        },
+        {
+          "targetFilename" : "src/main/webapp/scripts/app/entities/<current.entityNameLowerCase>/<current.entityNameLowerCase>.js",
+          "match" : "methods/entity_match3.js",
+          "target" : "methods/entity_replace3.js",
+          "action" : "replace",
+          "replace" : "all"
+        }
+      ]
+    }
+  ]  
+}

@@ -1,0 +1,1 @@
+$state.go('<%= current.entityNameLowerCase %>', null, { reload: true });

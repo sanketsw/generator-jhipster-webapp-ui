@@ -1,0 +1,22 @@
+
+<<%= current.headerClass %>><%= current.panelHeader %></<%= current.headerClass %>>
+<div ng-controller="<%= current.entityController %>">
+	<div class="list-group">
+		<div <%= current.entityEnumeration %>>
+			<button type="button" class="list-group-item"
+				ui-sref="presenter.detail({id:<%= current.counter %>.id})">
+				<span class="text-primary"><%= current.heading %></span> 
+				<span style="font-size: 0.8em;"><%= current.subheading %></span>
+				<!-- Properties for the uicomponent -->
+			</button>
+		</div>
+		<button type="button" class="list-group-item <%= current.operationAdd %>" ui-sref="<%= current.entityNameLowerCase %>.new">
+			<span class="glyphicon glyphicon-plus"></span><span class="text-primary"> Add </span>
+		</button>			
+	</div>
+</div>
+
+
+
+
+			

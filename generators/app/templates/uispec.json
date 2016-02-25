@@ -1,0 +1,129 @@
+{
+  "applicationName" : "Viral Asset Management",
+  "tagline" : "New way to manage your research",
+  "logo" : "glyphicon glyphicon-grain",
+  "embeddedComponents": [
+    {
+      "uicomponent" : "Accordion",
+      "wrappingClass" : "col-sm-12",
+      "panelHeader": "Viral Studies",
+      "headerClass" : "h2",
+      "entityController" : "StudyController",
+      "entityEnumeration" : "ng-repeat='s in studys' ng-init='s.runs=getRuns(s.id)'", 
+      "entityName" : "Study",
+      "entityNameLowerCase" : "study",
+      "heading" : "{{s.name}}",
+      "counter" : "s",
+      "operationAdd" : "show",
+      "properties" : [
+        {
+            "propertyId": 1,
+            "name": "type"
+        }
+      ],
+      "methods" : [
+        {
+
+          "methodType" : "RESTAPI",
+          "restapiName" : "study.runs",
+          "factory" : "StudyRuns",
+          "targetEntity" : "Run",
+          "targetJPAMethod" : "findByStudy_id",
+          "targetEntityEnumeration" : "runs",
+          "enumerationMethodName" : "getRuns"
+        },
+        {
+          "methodType" : "NavigationToPreviousAPI"
+        }
+      ],
+      "embeddedComponents" : [
+        {
+          "uicomponent" : "Accordion",
+          "wrappingClass" : "",
+          "panelHeader": "Runs",
+          "headerClass" : "h4",
+          "entityController" : "RunController",
+          "entityEnumeration" : "ng-repeat='r in s.runs' ng-init='r.plates=getPlates(r.id)'", 
+          "entityName" : "Run",
+          "entityNameLowerCase" : "run",
+          "heading" : "{{r.name}}",
+          "counter" : "r",
+          "operationAdd" : "show",
+          "methods" : [
+            {
+
+              "methodType" : "RESTAPI",
+              "restapiName" : "run.plates",
+              "factory" : "RunPlates",
+              "targetEntity" : "Plate",
+              "targetJPAMethod" : "findByRun_id",
+              "targetEntityEnumeration" : "plates",
+              "enumerationMethodName" : "getPlates"
+            },
+            {
+              "methodType" : "NavigationToPreviousAPI"
+            }
+          ],
+          "embeddedComponents" : [
+             {
+              "uicomponent" : "Accordion",
+              "wrappingClass" : "",
+              "panelHeader": "Plates",
+              "headerClass" : "h5",
+              "entityController" : "PlateController",
+              "entityEnumeration" : "ng-repeat='p in r.plates' ng-init='p.elements=getElements(p.id)'", 
+              "entityName" : "Plate",
+              "entityNameLowerCase" : "plate",
+              "heading" : "{{p.name}}",
+              "counter" : "p",
+              "operationAdd" : "show",
+              "methods" : [
+                {
+
+                  "methodType" : "RESTAPI",
+                  "restapiName" : "plate.elements",
+                  "factory" : "PlateElements",
+                  "targetEntity" : "Element",
+                  "targetJPAMethod" : "findByPlate_id",
+                  "targetEntityEnumeration" : "elements",
+                  "enumerationMethodName" : "getElements"
+                },
+                {
+                  "methodType" : "NavigationToPreviousAPI"
+                }
+              ],
+              "embeddedComponents" : [
+                 {
+                  "uicomponent" : "Matrix",
+                  "wrappingClass" : "",
+                  "panelHeader": "Plate Elements",
+                  "headerClass" : "h6",
+                  "columns" : "p.columns",
+                  "array" : "p.elements",
+                  "property" : "value",
+                  "counter" : "e",
+                  "trueValue" : "+",
+                  "trueCellColorClass" : "bg-success",
+                  "falseValue" : "-",
+                  "falseCellColorClass" : "bg-danger", 
+                  "entityController" : "ElementController",                  
+                  "entityName" : "Element",
+                  "entityNameLowerCase" : "element",
+                  "operationAdd" : "show",
+                  "methods" : [
+                    {
+                      "methodType" : "MatrixComponentAPI"
+                    },
+                    {
+                      "methodType" : "NavigationToPreviousAPI"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+<<%= current.headerClass %>><%= current.panelHeader %></<%= current.headerClass %>>
+<div ng-controller="<%= current.entityController %>">
+	<div <%= current.entityEnumeration %>>
+		<div class="<%= current.panelwidth%>">
+			<div class="panel panel-default <%= current.textColorClass%>" ng-click="" ui-sref="<%= current.entityNameLowerCase %>.detail({id:<%= current.counter %>.id})" style="margin-bottom: 10px;">
+				<div class="panel-body <%= current.panelBackgroundClass%>" style="line-height: 1;<%= current.style %>">
+					<span><%= current.heading %></span><br style="line-height: 1.4;">
+					<span style="font-size: 0.8em;"><%= current.subheading %></span>
+					<!-- Properties for the uicomponent -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="<%= current.panelwidth%> <%= current.operationAdd %>">
+		<div class="panel panel-default" ng-click="" ui-sref="<%= current.entityNameLowerCase %>.new">
+			<div class="panel-body" style="<%= current.style %>">
+				<span class="glyphicon glyphicon-plus"></span><span class="text-primary"> Add </span>
+			</div>
+		</div>
+	</div>
+</div>

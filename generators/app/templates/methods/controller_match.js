@@ -1,0 +1,1 @@
+controller('<%= current.entityController %>', function ($scope, $state, <%= current.entityName %>, 

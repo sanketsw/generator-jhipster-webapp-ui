@@ -1,0 +1,1 @@
+$scope.loadPage = function(page) {

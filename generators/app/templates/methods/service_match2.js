@@ -1,0 +1,1 @@
+data = angular.fromJson(data);

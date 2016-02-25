@@ -1,0 +1,17 @@
+<div ng-cloak style="line-height: 1;">
+  <jh-alert></jh-alert>
+	<!-- added by jhipster-webapp-ui module -->
+  <div class="row" ng-switch="isAuthenticated()" >
+   <div class="col-md-4">
+     <div class="alert alert-success" ng-switch-when="true">
+       You are logged in as user "{{account.login}}".
+     </div>
+   </div>
+   <div class="col-md-7 col-md-offset-1">
+
+     <div class="<%= current.wrappingClass %>" ng-include="'/scripts/app/screens/customView/<%= current.entityName %>.<%= current.uicomponent %>.html'" ></div>
+
+   </div>
+ </div>
+
+</div>

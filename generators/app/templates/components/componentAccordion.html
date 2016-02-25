@@ -1,0 +1,19 @@
+
+<<%= current.headerClass %>><%= current.panelHeader %></<%= current.headerClass %>>
+<div ng-controller="<%= current.entityController %>">
+	<uib-accordion close-others="true" ng-init="isopen = false">
+		<uib-accordion-group is-open="isopen" <%= current.entityEnumeration %> >
+			<uib-accordion-heading ng-click="status.open = !status.open">
+				<div class="text-primary"><%= current.heading %> 
+					<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i>
+				</div>
+			</uib-accordion-heading>
+			<!-- Properties for the uicomponent -->
+		</uib-accordion-group>
+	</uib-accordion>
+	<button type="button" ui-sref="<%= current.entityNameLowerCase %>.new" class="btn btn-default <%= current.operationAdd %>">
+		<span class="glyphicon glyphicon-plus"></span> <span
+			class="text-primary"> Add <%= current.entityName %></span>
+	</button>
+</div>
+

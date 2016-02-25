@@ -1,0 +1,1 @@
+$state.go('element', null, { reload: true });

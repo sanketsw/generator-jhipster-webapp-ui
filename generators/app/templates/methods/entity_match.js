@@ -1,0 +1,1 @@
+onEnter: ['$stateParams', '$state', '$uibModal'

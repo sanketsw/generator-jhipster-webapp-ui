@@ -1,0 +1,1 @@
+Principal.identity().then(function(account) {

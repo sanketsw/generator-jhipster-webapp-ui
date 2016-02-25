@@ -1,0 +1,18 @@
+
+<<%= current.headerClass %>><%= current.panelHeader %></<%= current.headerClass %>>
+<div ng-controller="<%= current.entityController %>">
+	<div class="<%= current.operationAdd %>" ng-click="" ui-sref="<%= current.entityNameLowerCase %>.new">
+		<span class="glyphicon glyphicon-plus"></span><span class="text-primary"> Add </span>
+		<p></p>
+	</div>
+	<div <%= current.entityEnumeration %>>
+		<span class="text-muted"><%= current.heading %></span> 
+		<span style="font-size: 0.8em;"><%= current.subheading %></span>
+		<p></p>
+		<!-- Properties for the uicomponent -->
+	</div>
+</div>
+
+
+
+			
