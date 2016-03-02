@@ -30,6 +30,7 @@ npm update -g generator-jhipster-webapp-ui
 # License
 
 Apache-2.0 © [Sanket Sangwikar]
+sanketsangwikar@gmail.com
 
 [npm-image]: https://img.shields.io/npm/v/generator-jhipster-webapp-ui.svg
 [npm-url]: https://npmjs.org/package/generator-jhipster-webapp-ui
